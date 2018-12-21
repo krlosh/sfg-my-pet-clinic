@@ -42,5 +42,7 @@
             </plugin>
         </plugins>
     </build>
-
+    <scm>
+        <developerConnection>scm:git:git@github.com:krlosh/sfg-my-pet-clinic.git</developerConnection>
+    </scm>
 </project>
