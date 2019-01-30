@@ -34,4 +34,12 @@ public class PetTypeMapService extends AbstractMapService<PetType, Long>  implem
     public void delete(PetType petType) {
         super.delete(petType);
     }
+
+    @Override
+    public PetType findByName(String s) {
+        return this.findAll().stream()
+                .filter(petType -> s.equalsIgnoreCase(petType.getName()))
+                .findFirst()
+                .orElse(null);
+    }
 }

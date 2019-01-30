@@ -45,4 +45,9 @@ public class PetTypeSDJpaService implements PetTypeService {
     public void deleteById(Long aLong) {
         this.petTypeRepository.deleteById(aLong);
     }
+
+    @Override
+    public PetType findByName(String s) {
+        return this.petTypeRepository.findByName(s);
+    }
 }

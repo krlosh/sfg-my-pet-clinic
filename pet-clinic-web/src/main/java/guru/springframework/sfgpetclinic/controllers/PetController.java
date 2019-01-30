@@ -32,7 +32,7 @@ public class PetController {
     }
 
 
-    @ModelAttribute("type")
+    @ModelAttribute("types")
     public Collection<PetType> populatePetTypes() {
         return this.petTypeService.findAll();
     }
@@ -50,6 +50,7 @@ public class PetController {
     @GetMapping("/pets/new")
     public String initCreationForm(Owner owner, Model model){
         Pet pet = Pet.builder().build();
+        pet.setOwner(owner);
         owner.getPets().add(pet);
         model.addAttribute(pet);
         return PETS_CREATE_OR_UPDATE_PET_FORM;
