@@ -21,7 +21,9 @@ public class Pet extends BaseEntity{
         this.owner = owner;
         this.birthDate = birthDate;
         this.name = name;
-        this.visits = visits;
+        if(visits!=null) {
+            this.visits = visits;
+        }
     }
 
     @ManyToOne
