@@ -11,6 +11,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.beans.PropertyEditorSupport;
+import java.time.LocalDate;
 
 @Controller
 public class VisitController {
@@ -24,8 +26,14 @@ public class VisitController {
     }
 
     @InitBinder
-    public void setAllowedFields(WebDataBinder webDataBinder) {
+    public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setDisallowedFields("id");
+        webDataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport(){
+            @Override
+            public void setAsText(String text) throws IllegalArgumentException {
+                super.setValue(LocalDate.parse(text));
+            }
+        });
     }
 
     @ModelAttribute("visit")
